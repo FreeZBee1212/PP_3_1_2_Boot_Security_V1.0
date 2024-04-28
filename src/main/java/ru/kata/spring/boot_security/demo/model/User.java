@@ -19,9 +19,9 @@ public class User {
     @Column
     private String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "users_roles",
+            name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
@@ -30,19 +30,28 @@ public class User {
 
 
 
-    @Column
-    private String ROLE;
+//    @Column
+//    private String ROLE;
 
 
     public User() {
     }
 
-    public User(String username, String surname, int age, String password, String ROLE) {
+
+    public User(String username, String surname, int age, String password, Set<Role> roles) {
         this.username = username;
         this.surname = surname;
         this.age = age;
         this.password = password;
-        this.ROLE = ROLE;
+        this.roles = roles;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public String getUsername() {
@@ -85,13 +94,7 @@ public class User {
         this.age = age;
     }
 
-    public String getROLE() {
-        return ROLE;
-    }
 
-    public void setROLE(String ROLE) {
-        this.ROLE = ROLE;
-    }
 
     @Override
     public boolean equals(Object o) {

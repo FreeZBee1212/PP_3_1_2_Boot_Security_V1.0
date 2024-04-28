@@ -20,17 +20,32 @@
     <input type="password" th:field="*{password}" id="password">
     <br>
 
-    <form th:method="POST" th:action="@{/auth/registration}" th:object="${user}">
-        <label for="ADMIN">Admin</label>
-        <input type="checkbox" th:field="*{ROLE}" id="ADMIN" name="ADMIN" th:value="ROLE_ADMIN">
-        <br>
-        <label for="USER">User</label>
-        <input type="checkbox" th:field="*{ROLE}" id="USER" name="USER" th:value="ROLE_USER">
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="admin" name="roles[]" value="ROLE_ADMIN">
+        <label class="form-check-label" for="admin">Admin</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="user" name="roles[]" value="ROLE_USER">
+        <label class="form-check-label" for="user">User</label>
+    </div>
 
-        <br>
-        <input type="submit" VALUE="Sign up!">
+    <br>
 
-    </form>
+    <input type="submit" VALUE="Sign up!">
+<!--    <form th:method="POST" th:action="@{/auth/registration}" th:object="${user}">-->
+<!--        <label for="ADMIN">Admin</label>-->
+<!--        <input type="checkbox" th:field="*{ROLE}" id="ADMIN" name="ADMIN" th:value="ROLE_ADMIN">-->
+<!--        <br>-->
+<!--        <label for="USER">User</label>-->
+<!--        <input type="checkbox" th:field="*{ROLE}" id="USER" name="USER" th:value="ROLE_USER">-->
+
+<!--        <br>-->
+<!--        <input type="submit" VALUE="Sign up!">-->
+
+<!--    </form>-->
+
+
+
 <!--    <form th:method="POST" th:action="@{/auth/registration}" th:object="${role}">-->
 <!--        <label for="ADMIN">Admin</label>-->
 <!--        <input type="checkbox" th:field="*{name}" id="ADMIN" name="ADMIN" th:value="ROLE_ADMIN">-->
